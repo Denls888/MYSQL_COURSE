@@ -1,47 +1,54 @@
-###UPDATE
 
-#UPDATE table_name SET column_name='new data' WHERE column_name='old_data';
+
+--UPDATE table_name SET column_name='new data' WHERE column_name='old_data';
 
 UPDATE cats SET breed='Shorthair'
-WHERE breed='tabby';
+    WHERE breed='tabby';
 
 UPDATE cats SET age=99
-WHERE age=10;
+    WHERE age=10;
 
-
-#################################
 update cats set name='jack'
-where name='jackson';
+    where name='jackson';
 
 UPDATE cats SET breed='British shorthair'
-WHERE name='ringo';
+    WHERE name='ringo';
 
 UPDATE cats set age=12
-where breed='maine coon';
-################################
-################################
+     where breed='maine coon';
+
+--################################
+--################################
 
 
-###DELETE
+/* -------------------------------------------------------------------------- */
+/* THIS WILL DELETE A ROW WHERE NAME IS 'EGG'                                 */
+/* -------------------------------------------------------------------------- */
 
-# THIS WILL DELETE A ROW WHERE NAME IS 'EGG'
 DELETE FROM cats WHERE name='egg';
 
-# DELETE FROM cats; will delete only rows from table 'cats'
+/* -------------------------------------------------------------------------- */
+/* DELETE FROM cats; will delete only rows from table 'cats'                  */
+/* -------------------------------------------------------------------------- */
 
 DELETE FROM cats;
 
 
-#################################
+---#################################
 DELETE FROM cats where age=4;
 
 DELETE FROM cats where age=cat_id;
 
 DELETE FROM cats;
-#################################
-#################################
+---#################################
+---#################################
 
-#CRUD CHALLANGE SECTION
+
+
+/* -------------------------------------------------------------------------- */
+/* #CRUD CHALLANGE SECTION                                                    */
+/* -------------------------------------------------------------------------- */
+
 CREATE DATABASE shirts_db;
 
 CREATE TABLE shirts(
