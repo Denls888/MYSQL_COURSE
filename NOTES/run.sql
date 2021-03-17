@@ -42,5 +42,3 @@ SELECT
    CONCAT(stock_quantity, ' in stock') AS 'quantity'
 FROM books LIMIT 2;
 
-
-
