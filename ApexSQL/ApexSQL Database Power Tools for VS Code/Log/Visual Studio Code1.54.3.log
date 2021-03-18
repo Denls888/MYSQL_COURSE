@@ -1,0 +1,30 @@
+2021-03-16 21:16:27.040 21919 -1     INFO  [VSCPWRTOOLS: 2020.7.51.0]: OS version: Darwin 19.4.0 Darwin Kernel Version 19.4.0: Wed Mar  4 22:28:40 PST 2020; root:xnu-6153.101.6~15/RELEASE_X86_64
+2021-03-16 21:16:27.041 21919 -1     INFO  [VSCPWRTOOLS: 2020.7.51.0]: Host application: Visual Studio Code(1.54.3)
+2021-03-16 21:16:27.041 21919 -1     INFO  [VSCPWRTOOLS: 2020.7.51.0]: Initializing addin: ApexSQL Database Power Tools for VS Code 2020.7.51.0
+2021-03-17 18:45:29.811 21919 -1     ERROR [VSCPWRTOOLS: 2020.7.51.0]: An exception occurred
+Unable to write data to the transport connection: Operation canceled.
+Type: System.IO.IOException
+	Stack trace
+	   at System.Net.Sockets.NetworkStream.Write(Byte[] buffer, Int32 offset, Int32 size)
+	   at System.Net.Security.SslStream.WriteSingleChunk[TWriteAdapter](TWriteAdapter writeAdapter, ReadOnlyMemory`1 buffer)
+	   at System.Net.Security.SslStream.WriteAsyncInternal[TWriteAdapter](TWriteAdapter writeAdapter, ReadOnlyMemory`1 buffer)
+	   at System.Net.Security.SslStream.Write(Byte[] buffer, Int32 offset, Int32 count)
+	   at System.IO.Stream.Write(ReadOnlySpan`1 buffer)
+	   at MySqlConnector.Utilities.Utility.Write(Stream stream, ReadOnlyMemory`1 data) in /_/src/MySqlConnector/Utilities/Utility.cs:line 437
+	   at MySqlConnector.Protocol.Serialization.StreamByteHandler.WriteBytesAsync(ReadOnlyMemory`1 data, IOBehavior ioBehavior) in /_/src/MySqlConnector/Protocol/Serialization/StreamByteHandler.cs:line 100
+	--- End of stack trace from previous location where exception was thrown ---
+	   at MySqlConnector.Protocol.Serialization.ProtocolUtility.<WritePacketAsync>g__WritePacketAsyncAwaited|8_0(ValueTask`1 task_, Byte[] buffer_) in /_/src/MySqlConnector/Protocol/Serialization/ProtocolUtility.cs:line 547
+	   at MySqlConnector.Core.ServerSession.SendReplyAsyncAwaited(ValueTask`1 task) in /_/src/MySqlConnector/Core/ServerSession.cs:line 834
+	   at MySqlConnector.Core.CommandExecutor.ExecuteReaderAsync(IReadOnlyList`1 commands, ICommandPayloadCreator payloadCreator, CommandBehavior behavior, IOBehavior ioBehavior, CancellationToken cancellationToken) in /_/src/MySqlConnector/Core/CommandExecutor.cs:line 60
+	   at MySqlConnector.MySqlCommand.ExecuteReader() in /_/src/MySqlConnector/MySqlCommand.cs:line 105
+	   at ApexSQL.VSC.Core.MySqlServerConnection.<>c__DisplayClass9_0.<ExecuteQuery>b__0(String statement) in E:\Agent\_work\331\s\Projects\ApexSQL.VSC.Common\Classes\MySqlServerConnection.cs:line 69
+	   at System.Collections.Generic.List`1.ForEach(Action`1 action)
+	   at ApexSQL.VSC.Core.MySqlServerConnection.ExecuteQuery(String query) in E:\Agent\_work\331\s\Projects\ApexSQL.VSC.Common\Classes\MySqlServerConnection.cs:line 63
+	Inner exception: Operation canceled
+	Type: System.Net.Sockets.SocketException
+		Stack trace
+		   at System.Net.Sockets.NetworkStream.Write(Byte[] buffer, Int32 offset, Int32 size)
+
+2021-03-17 20:15:04.811 591   -1     INFO  [VSCPWRTOOLS: 2020.7.51.0]: OS version: Darwin 19.4.0 Darwin Kernel Version 19.4.0: Wed Mar  4 22:28:40 PST 2020; root:xnu-6153.101.6~15/RELEASE_X86_64
+2021-03-17 20:15:04.813 591   -1     INFO  [VSCPWRTOOLS: 2020.7.51.0]: Host application: Visual Studio Code(1.54.3)
+2021-03-17 20:15:04.813 591   -1     INFO  [VSCPWRTOOLS: 2020.7.51.0]: Initializing addin: ApexSQL Database Power Tools for VS Code 2020.7.51.0
