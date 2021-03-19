@@ -31,8 +31,9 @@ CREATE TABLE unique_cats2 (cat_id int not null AUTO_INCREMENT,
 
 
 
-CREATE TABLE employees (
-  id int not null AUTO_INCREMENT, #PRIMARY KEY (id) <--(can be here)
+CREATE TABLE employees 
+(
+  id int not null AUTO_INCREMENT, -- PRIMARY KEY(id) (can be here)
   last_name varchar(50) not null,
   first_name varchar(50) not null,
   middle_name varchar(50) not null DEFAULT 'not applicable',
@@ -175,7 +176,7 @@ SELECT cat_id AS id, name FROM cats;
 
 --##############################################
 --##############################################
- select cat_id, age from cats where cat_id like age; #OR CAT_ID=AGE
+ select cat_id, age from cats where cat_id like age; -- OR CAT_ID=AGE
 +--------+------+
 | cat_id | age  |
 +--------+------+
@@ -223,16 +224,16 @@ select name, breed from cats;
 
 
 
-##############################################
-##############################################
+--##############################################
+--##############################################
  select name, age from cats where breed='tabby';
 +-------+------+
 | name  | age  |
 +-------+------+
 | Ringo |    4 |
 | Misty |   13 |
-##############################################
-##############################################
+--##############################################
+--##############################################
 
 
 

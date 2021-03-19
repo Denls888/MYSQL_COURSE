@@ -57,12 +57,12 @@ FROM books;
 ---######################################################
 
 
----CONCAT_SW The first argument is the separator 
+---CONCAT_WS The first argument is the separator 
 ---for the rest of the arguments.
 
 
 SELECT
-    CONCAT_WS (' - ', title, author_fname, author_lname)
+    CONCAT_WS(' - ', title, author_fname, author_lname)
 FROM books;
 
 +------------------------------------------------------------------------+
