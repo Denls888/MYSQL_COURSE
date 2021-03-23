@@ -203,6 +203,94 @@ RIGHT JOIN orders
 |    5 | Bette      | Davis     | bette@aol.com    |  5 | 1999-04-11 | 450.25 |           5 |
 +------+------------+-----------+------------------+----+------------+--------+-------------+
 
+SELECT Concat (first_name, ' ', last_name) AS 'Name',
+       IFNULL(Sum(amount), '0' )           AS "Total spent"
+FROM   customers AS c
+       RIGHT JOIN orders AS o
+               ON c.id = o.customer_id
+GROUP  BY NAME
+ORDER  BY amount DESC; 
+
+
+
+
+/* -------------------------------------------------------------------------- */
+/* ON DELETE CASCADE                                                          */
+/* -------------------------------------------------------------------------- */
+-- DELETES ROWS FROM BOTH PARENT AND CHILD TABLES
+-- WORKING WITH ON DELETE CASCADE
+
+CREATE TABLE customers(
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    first_name VARCHAR(100),
+    last_name VARCHAR(100),
+    email VARCHAR(100)
+);
+ 
+CREATE TABLE orders(
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    order_date DATE,
+    amount DECIMAL(8,2),
+    customer_id INT,
+    FOREIGN KEY(customer_id) 
+        REFERENCES customers(id)
+        ON DELETE CASCADE
+);
+--#####################################################
+
+-- first assignment 
+SELECT first_name, title, grade
+FROM students 
+INNER JOIN papers
+ON students.id = papers.student_id
+ORDER BY grade DESC;
+
+-- seconf assigment
+SELECT first_name, title, grade
+FROM students 
+LEFT JOIN papers
+ON students.id = papers.student_id
+ORDER BY grade DESC;
+
+-- third assignment
+SELECT first_name, 
+       IFNULL(title, 'MISSING'),
+       IFNULL(grade, 0) 
+FROM students 
+LEFT JOIN papers
+ON students.id = papers.student_id
+ORDER BY grade DESC;
+
+-- 4th assignment
+SELECT first_name,
+	   IFNULL(AVG(grade), 0) AS 'average'
+FROM students
+LEFT JOIN papers
+ON students.id = papers.student_id
+GROUP BY students.id
+ORDER BY average DESC;
+
+-- 5th assignment
+SELECT
+	first_name,
+	IFNULL(AVG(grade), 0) AS 'average',
+	CASE
+		WHEN AVG(grade) >= '75' THEN 'PASSING'
+		ELSE 'FAILING'
+	END AS 'STATUS'
+FROM
+	students
+LEFT JOIN papers ON
+	students.id = papers.student_id
+GROUP BY
+	first_name
+ORDER BY
+	average DESC;
+
+
+/* -------------------------------------------------------------------------- */
+/* MANY TO MANY                                                               */
+/* -------------------------------------------------------------------------- */
 
 
 
@@ -222,50 +310,10 @@ RIGHT JOIN orders
 
 
 
- /* SELECT * 
-     FROM customers 
-     INNER JOIN orders 
-         ON customers.id = orders.customer_id;
-+----+------------+-----------+------------------+----+------------+--------+-------------+
-| id | first_name | last_name | email            | id | order_date | amount | customer_id |
-+----+------------+-----------+------------------+----+------------+--------+-------------+
-|  1 | Boy        | George    | george@gmail.com |  1 | 2016-02-10 |  99.99 |           1 |
-|  1 | Boy        | George    | george@gmail.com |  2 | 2017-11-11 |  35.50 |           1 |
-|  2 | George     | Michael   | gm@gmail.com     |  3 | 2014-12-12 | 800.67 |           2 |
-|  2 | George     | Michael   | gm@gmail.com     |  4 | 2015-01-03 |  12.50 |           2 |
-|  5 | Bette      | Davis     | bette@aol.com    |  5 | 1999-04-11 | 450.25 |           5 |
-+----+------------+-----------+------------------+----+------------+--------+-------------+
 
-SELECT * 
-    FROM customers 
-    LEFT JOIN orders 
-        ON customers.id = orders.customer_id;
-+----+------------+-----------+------------------+------+------------+--------+-------------+
-| id | first_name | last_name | email            | id   | order_date | amount | customer_id |
-+----+------------+-----------+------------------+------+------------+--------+-------------+
-|  1 | Boy        | George    | george@gmail.com |    2 | 2017-11-11 |  35.50 |           1 |
-|  1 | Boy        | George    | george@gmail.com |    1 | 2016-02-10 |  99.99 |           1 |
-|  2 | George     | Michael   | gm@gmail.com     |    4 | 2015-01-03 |  12.50 |           2 |
-|  2 | George     | Michael   | gm@gmail.com     |    3 | 2014-12-12 | 800.67 |           2 |
-|  3 | David      | Bowie     | david@gmail.com  | NULL | NULL       |   NULL |        NULL |
-|  4 | Blue       | Steele    | blue@gmail.com   | NULL | NULL       |   NULL |        NULL |
-|  5 | Bette      | Davis     | bette@aol.com    |    5 | 1999-04-11 | 450.25 |           5 |
-+----+------------+-----------+------------------+------+------------+--------+-------------+
+ 
 
- SELECT * 
-     FROM customers 
-     RIGHT JOIN orders 
-         ON customers.id = orders.customer_id;
-+------+------------+-----------+------------------+----+------------+--------+-------------+
-| id   | first_name | last_name | email            | id | order_date | amount | customer_id |
-+------+------------+-----------+------------------+----+------------+--------+-------------+
-|    1 | Boy        | George    | george@gmail.com |  1 | 2016-02-10 |  99.99 |           1 |
-|    1 | Boy        | George    | george@gmail.com |  2 | 2017-11-11 |  35.50 |           1 |
-|    2 | George     | Michael   | gm@gmail.com     |  3 | 2014-12-12 | 800.67 |           2 |
-|    2 | George     | Michael   | gm@gmail.com     |  4 | 2015-01-03 |  12.50 |           2 |
-|    5 | Bette      | Davis     | bette@aol.com    |  5 | 1999-04-11 | 450.25 |           5 |
-+------+------------+-----------+------------------+----+------------+--------+-------------+
- */
+
 
 
 
